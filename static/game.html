@@ -5,6 +5,36 @@
     <meta charset="UTF-8">
     <title>Game</title>
     <link rel="stylesheet" type="text/css" href="static/index.css">
+    <style>
+        /* toggle hover */
+        
+        input.radio:hover:not(:checked)~label:before {
+            content: '\2714';
+            text-indent: .9em;
+            color: #C2C2C2;
+        }
+        
+        input.radio:hover:not(:checked)~label {
+            color: #888;
+        }
+        /* toggle on */
+        
+        input.radio:checked~label:before {
+            content: '\2714';
+            text-indent: .9em;
+            color: #9CE2AE;
+            background-color: #4DCB6D;
+        }
+        
+        input.radio:checked~label {
+            color: #777;
+        }
+        /* radio focus */
+        
+        input.radio:focus~label:before {
+            box-shadow: 0 0 0 3px #999;
+        }
+    </style>
 </head>
 
 <body onLoad="remind()" width='100%' background="image.JPG">
