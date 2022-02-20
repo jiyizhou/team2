@@ -23,6 +23,10 @@ def map():
 def game():
     return app.send_static_file("game.html")
 
+@app.route('/donate')
+def donate():
+    return app.send_static_file("donate.html")
+
 @app.route('/image')
 def image():
     return app.send_static_file("IMG_1930.JPG")

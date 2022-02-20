@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="static/index.css">
 </head>
 
-<body background="image.JPG">
+<body onLoad="remind()" width='100%' background="image.JPG">
     <header class="header">
         <h1 class="logo"><a href="#">Stop Asian Hate</a></h1>
         <ul class="main-nav">
@@ -24,10 +24,39 @@
     <!--<button onclick="myFunction()">Start</button>-->
     <!--<p id="demo"></p>-->
     <center>
-        <p>Push me to start</p>
+        <p id="life">Life: </p>
+        <p id="days">Days Survived: </p>
     </center>
-    <center><button onclick="goon()">Start</button></center>
-    <p id="demo2"></p>
+    <center><button onclick="goon()">Refresh</button></center>
+    <div>
+        <input type="radio" name="radio" id="radio1" class="radio" onClick="reply_click(this.id)" />
+        <label for="radio1">Go out in group</label>
+    </div>
+
+    <div>
+        <input type="radio" name="radio" id="radio2" class="radio" onClick="reply_click(this.id)" />
+        <label for="radio2">Increase fitness</label>
+    </div>
+
+    <div>
+        <input type="radio" name="radio" id="radio3" class="radio" onClick="reply_click(this.id)" />
+        <label for="radio3">Take a vehicle</label>
+    </div>
+
+    <div>
+        <input type="radio" name="radio" id="radio4" class="radio" onClick="reply_click(this.id)" />
+        <label for="radio4">Make friends in community</label>
+    </div>
+
+    <div>
+        <input type="radio" name="radio" id="radio5" class="radio" onClick="reply_click(this.id)" />
+        <label for="radio5">Advocate an online movement</label>
+    </div>
+
+    <div>
+        <input type="radio" name="radio" id="radio6" class="radio" onClick="reply_click(this.id)" />
+        <label for="radio6">Support a hate incident victim</label>
+    </div>
     <script>
         // function myFunction(){
         //  var x;
@@ -38,24 +67,75 @@
         //       document.getElementById("demo").innerHTML=x;
         //   }
         // }
+        var days = 0;
+        var life = 20;
+        const event = ["for dining", "to school", "to groceries", "to cinema", "to clinic", "to walk", "to parties", "to gym", "to meet friends", "to party"];
+        const danger = [21, 36, 40, 32, 12, 11, 23, 9, 26, 39];
+        const lifeUp = [65, 35, 70, 45, 30, 50];
+        document.getElementById('life').innerHTML = 'Life: ' + life;
+        document.getElementById('days').innerHTML = 'Days: ' + days;
+
+        function remind() {
+            alert("Make action and improve your safety!\nChoose from the options on the left...");
+        }
+
         function goon() {
-            var num = Math.floor(Math.random() * 100 + 1); // 产生0-100的数加以1
-            go_on = confirm("Wanna go out today?");
-            if (num < 97) {
-                if (go_on) {
-                    alert("DANGEROUS!");
-                    go_die = confirm("Still wanna go out?");
-                    if (go_die) {
-                        alert("You are attacked!");
-                        alert("YOR ARE DIED. Told you today was dangerous!");
-                    } else {
-                        alert("Finally you gave up going out! Congrats you escaped from death!");
-                    }
-                } else {
-                    alert("Smart choice! Today is a dangerous day, just stay at home!");
-                }
+            days = 0;
+            life = 20;
+
+            document.getElementById('life').innerHTML = 'Life: ' + life;
+            document.getElementById('days').innerHTML = 'Days: ' + days;
+
+            let radios = document.getElementsByClassName("radio");
+            for (i = 0; i < radios.length; i++) {
+                radios[i].disabled = false;
+                radios[i].checked = false;
+            }
+            // var num = Math.floor(Math.random() * 100 + 1); // 产生0-100的数加以1
+            // var check_point = danger[num % 10];
+            // go_on = confirm("Wanna go out " + event[num % 10].toString() + " today? Today's danger index is " + check_point);
+            // if (check_point > 50) {
+            //     if (go_on) {
+            //         alert("DANGEROUS!");
+            //         go_die = confirm("Still wanna go out?");
+            //         if (go_die) {
+            //             alert("You are attacked!");
+            //             alert("YOR ARE DIED. Told you today was dangerous!");
+            //         } else {
+            //             alert("Finally you gave up going out! Congrats you escaped from death!");
+            //         }
+            //     } else {
+            //         alert("Smart choice! Today is a dangerous day, just stay at home!");
+            //     }
+            // } else {
+            //     alert("Today is a safe day, congrats! You lived one more day!");
+            // }
+        }
+
+        function reply_click(clicked_id) {
+            let radios = document.getElementsByClassName("radio");
+            for (i = 0; i < radios.length; i++) {
+                radios[i].disabled = true;
+            }
+            var addLife = lifeUp[parseInt(clicked_id[5]) - 1];
+            life += addLife;
+            if (life > 100) life = 100;
+            document.getElementById('life').innerHTML = 'Life: ' + life;
+            var randomNum = Math.floor(Math.random() * 100 + 1) % 10;
+            var randomRisk = Math.floor(Math.random() * 100 + 1) % 50;
+            var risk = danger[randomNum] + randomRisk;
+            alert("You need to go out with task: " + event[randomNum].toString() + ". \nAnd the risk today is " + risk + " !");
+            if (risk > life) {
+                alert("You survived " + days + " days!");
             } else {
-                alert("Today is a safe day, congrats! You lived one more day!");
+                life -= risk;
+                document.getElementById('life').innerHTML = 'Life: ' + life;
+                days++;
+                document.getElementById('days').innerHTML = 'Days: ' + days;
+                for (i = 0; i < radios.length; i++) {
+                    radios[i].disabled = false;
+                    radios[i].checked = false;
+                }
             }
         }
     </script>
