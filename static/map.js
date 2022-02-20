@@ -1,5 +1,5 @@
 var data;
-
+var num;
 
 fetch('data').then(function (response) {
     return response.text();
@@ -66,6 +66,7 @@ fetch('data').then(function (response) {
             view.hitTest(screenPoint).then(function (response) {
                 if (response.results.length) {
                     console.log(response.results[0].graphic);
+                    num = getRandomInt(138);
                     openNav();
                 }
             });
@@ -79,9 +80,10 @@ function openNav() {
     document.getElementById("main").style.marginLeft = "250px";
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 
-    // document.getElementById("date").innerHTML = data[2].'Date of incident';
-    var num = getRandomInt(138);
+    
     console.log(num);
+    document.getElementById("date").innerHTML = data[num].Date_of_incident;
+    document.getElementById("type").innerHTML = data[num].Type_of_Incident;
     document.getElementById("summary").innerHTML = data[num].Summary;
 }
 

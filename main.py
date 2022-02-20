@@ -9,7 +9,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-    return app.send_static_file("index.html")
+    return app.send_static_file("map.html")
+
+@app.route('/discussion')
+def discussion():
+    return app.send_static_file("discussion.html")
+
+@app.route('/map')
+def map():
+    return app.send_static_file("map.html")
+
 
 @app.route('/data')
 def data():

@@ -1,0 +1,84 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="static/index.css">
+    <title>Html</title>
+    <style>
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+        
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+        
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #8d4646;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+        
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        
+        .description {
+            margin: 10px;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.22/"></script>
+    <script src="static/map.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="logo"><a href="#">Stop Asian Hate</a></h1>
+        <ul class="main-nav">
+            <li><a href="/map">Map</a></li>
+            <li><a href="/discussion">Discussion</a></li>
+            <li><a href="/game">Game</a></li>
+            <li><a href="donate">Donate</a></li>
+        </ul>
+    </header>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <p class="description" id="date"></p>
+        <p class="description" id="type"></p>
+        <p class="description" id="summary"></p>
+    </div>
+    <div id="main">
+        <div id="viewDiv"></div>
+    </div>
+</body>
