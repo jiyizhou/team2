@@ -19,6 +19,14 @@ def discussion():
 def map():
     return app.send_static_file("map.html")
 
+@app.route('/game')
+def game():
+    return app.send_static_file("game.html")
+
+@app.route('/image')
+def image():
+    return app.send_static_file("IMG_1930.JPG")
+
 
 @app.route('/data')
 def data():

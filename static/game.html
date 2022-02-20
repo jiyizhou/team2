@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <link rel="stylesheet" type="text/css" href="static/index.css">
+</head>
+
+<body background="image.JPG">
+    <header class="header">
+        <h1 class="logo"><a href="#">Stop Asian Hate</a></h1>
+        <ul class="main-nav">
+            <li><a href="/map">Map</a></li>
+            <li><a href="/discussion">Discussion</a></li>
+            <li><a href="/game">Game</a></li>
+            <li><a href="donate">Donate</a></li>
+        </ul>
+    </header>
+    <div style="position:absolute; width:100%; height:100%; z-index:-1">
+        <img src="/image" height="100%" width="100%" />
+    </div>
+    <!-- <p>Push me</p>-->
+    <!--<button onclick="myFunction()">Start</button>-->
+    <!--<p id="demo"></p>-->
+    <center>
+        <p>Push me to start</p>
+    </center>
+    <center><button onclick="goon()">Start</button></center>
+    <p id="demo2"></p>
+    <script>
+        // function myFunction(){
+        //  var x;
+        //   var person=prompt("Create a character","");
+        //   if (person!=null && person!="")
+        //   {
+        //       x="Hello " + person + " How are you";
+        //       document.getElementById("demo").innerHTML=x;
+        //   }
+        // }
+        function goon() {
+            var num = Math.floor(Math.random() * 100 + 1); // 产生0-100的数加以1
+            go_on = confirm("Wanna go out today?");
+            if (num < 97) {
+                if (go_on) {
+                    alert("DANGEROUS!");
+                    go_die = confirm("Still wanna go out?");
+                    if (go_die) {
+                        alert("You are attacked!");
+                        alert("YOR ARE DIED. Told you today was dangerous!");
+                    } else {
+                        alert("Finally you gave up going out! Congrats you escaped from death!");
+                    }
+                } else {
+                    alert("Smart choice! Today is a dangerous day, just stay at home!");
+                }
+            } else {
+                alert("Today is a safe day, congrats! You lived one more day!");
+            }
+        }
+    </script>
+</body>
+
+</html>
